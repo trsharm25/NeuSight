@@ -1,0 +1,15 @@
+.vscode
+__pycache__
+core.python*
+log*
+*.egg-info
+*.pkl
+.ipynb_checkpoints
+old
+*.pyc
+*.png
+out
+out.txt
+out.csv
+cache
+library
