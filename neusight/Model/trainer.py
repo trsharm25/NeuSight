@@ -1,3 +1,5 @@
+# Code adapted from the HABITAT project (https://github.com/geoffxy/habitat)
+
 import torch
 from torch.utils.data import random_split, DataLoader
 import numpy as np
@@ -33,12 +35,6 @@ class Trainer:
 
         self.train_dataloader = DataLoader(train, batch_size=self.model.train_batch, shuffle=True)
         self.val_dataloader = DataLoader(val, batch_size=self.model.val_batch, shuffle=False)
-        # self.test_dataloaders = []
-        # for testset_path in testset_path_list:
-        #     testset = Dataset(testset_path)
-        #     testset.set_features(self.model.features)
-        #     dataloader = DataLoader(testset, batch_size=self.model.val_batch, shuffle=False)
-        #     self.test_dataloaders.append((dataloader, testset_path))
 
         # implement losses and optimizers
         def MAPELoss(pred, target):
@@ -136,33 +132,6 @@ class Trainer:
             else:
                 continue
 
-            # # test
-            # self.model = self.model.eval()
-            # entries = {}
-            # for test_dataloader, name in self.test_dataloaders:
-            #     perc_errors = []
-            #     for batch_o, batch_x, batch_m, batch_y in test_dataloader:
-            #         batch_x = batch_x.float()
-            #         batch_y = batch_y.float().numpy()
-
-            #         pred = self.model(batch_o, batch_x.to(self.device), batch_m.to(self.device)).detach().cpu().numpy()
-            #         pred = pred.reshape(batch_y.shape)
-            #         pred = np.maximum(pred, 0) # for habitat
-
-            #         perc_error = np.divide(np.abs(pred - batch_y), batch_y)
-            #         perc_errors.append(perc_error)
-
-            #     perc_errors_np = np.concatenate(perc_errors)
-            #     mean_perc_err = float(np.mean(perc_errors_np))
-            #     max_perc_err = np.amax(perc_errors_np)
-            #     print(f"{name} avg: %.4f, max: %.4f" % (mean_perc_err, max_perc_err), end="\t")
-
-            #     entries[name+"_avg"] = mean_perc_err
-            #     entries[name+"_max"] = max_perc_err
-
-            # for k, v in entries.items():
-            #     self.writer.add_scalar(k, v, epoch)
-
         self.writer.close()
 
     def test(self, testset_path_list=[], out_path=None):
@@ -208,44 +177,3 @@ class Trainer:
         
         print(preds)
 
-
-    def test(self, df_dataset, set_record=False):
-        pass
-        # print(f"set record : {set_record}")
-
-        # eps = 1e-9
-
-        # # declare device
-        # self.model = self.model.to(self.device)
-        # self.model = self.model.eval()
-
-        # # construct dataset loaders
-        # dataset = TorchDataset(df_dataset, self.model.features)
-        # self.test_dataloader = DataLoader(dataset, batch_size=1, shuffle=False)
-
-        # perc_errors = []
-
-        # predictions = []
-
-        # # for dumping
-        # # self.model.set_record(True)
-        # self.model = self.model.eval()
-
-        # for batch_o, batch_x, batch_m, batch_y in self.test_dataloader:
-        #     batch_x = batch_x.float()
-        #     batch_y = batch_y.float().numpy()
-
-        #     pred = self.model(batch_o, batch_x.to(self.device), batch_m.to(self.device)).detach().cpu().numpy()
-        #     pred = pred.reshape(batch_y.shape)
-        #     pred = np.maximum(pred, 0) # for habitat
-
-        #     perc_error = np.divide(np.abs(pred - batch_y), batch_y)
-        #     perc_errors.append(perc_error)
-
-        #     predictions.append(pred.item())
-
-        # perc_errors_np = np.concatenate(perc_errors)
-        # mean_perc_err = float(np.mean(perc_errors_np))
-        # max_perc_err = np.amax(perc_errors_np)
-
-        # return mean_perc_err, max_perc_err
