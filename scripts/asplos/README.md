@@ -30,4 +30,4 @@ The `results` and `summary` directories already contain the numbers shown in Fig
    - `run_pred_nvidia_roofline.py`
 
 4. **Compare predictions against ground truth:**
-   - Use the provided `summary.py` and `table.py` scripts. These will generate the summary of the prediction results and the table of the prediction results in the `summary` directory.
+   - Use the provided `summarize.py` and `table.py` scripts. These will generate the summary of the prediction results and the table of the prediction results in the `summary` directory.

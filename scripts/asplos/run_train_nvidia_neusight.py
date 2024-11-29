@@ -34,21 +34,21 @@ def launch_task(model_config_path, trainset_path, save_path, log_dir, epochs, bl
 
 def train():
 
-    # # bmm
-    # launch_task(model_config_path="./data/predictor/configs/MLP_WAVE_BMM.json", 
-    #             trainset_path="./data/dataset/train/bmm.csv", 
-    #             save_path="./data/predictor/MLP_WAVE/BMM", 
-    #             log_dir="./out/logs", 
-    #             epochs=100, 
-    #             blocking=False)
+    # bmm
+    launch_task(model_config_path="./data/predictor/configs/MLP_WAVE_BMM.json", 
+                trainset_path="./data/dataset/train/bmm.csv", 
+                save_path="./data/predictor/MLP_WAVE/BMM", 
+                log_dir="./out/logs", 
+                epochs=100, 
+                blocking=False)
 
-    # # linear
-    # launch_task(model_config_path="./data/predictor/configs/MLP_WAVE_LINEAR.json", 
-    #             trainset_path="./data/dataset/train/linear.csv", 
-    #             save_path="./data/predictor/MLP_WAVE/LINEAR", 
-    #             log_dir="./out/logs", 
-    #             epochs=100, 
-    #             blocking=False)
+    # linear
+    launch_task(model_config_path="./data/predictor/configs/MLP_WAVE_LINEAR.json", 
+                trainset_path="./data/dataset/train/linear.csv", 
+                save_path="./data/predictor/MLP_WAVE/LINEAR", 
+                log_dir="./out/logs", 
+                epochs=100, 
+                blocking=False)
 
     # ln
     launch_task(model_config_path="./data/predictor/configs/MLP_WAVE_LN.json", 
@@ -58,21 +58,21 @@ def train():
                 epochs=100, 
                 blocking=False)
     
-    # # softmax
-    # launch_task(model_config_path="./data/predictor/configs/MLP_WAVE_SOFTMAX.json", 
-    #             trainset_path="./data/dataset/train/softmax.csv", 
-    #             save_path="./data/predictor/MLP_WAVE/SOFTMAX", 
-    #             log_dir="./out/logs", 
-    #             epochs=100, 
-    #             blocking=False)
+    # softmax
+    launch_task(model_config_path="./data/predictor/configs/MLP_WAVE_SOFTMAX.json", 
+                trainset_path="./data/dataset/train/softmax.csv", 
+                save_path="./data/predictor/MLP_WAVE/SOFTMAX", 
+                log_dir="./out/logs", 
+                epochs=100, 
+                blocking=False)
 
-    # # vec
-    # launch_task(model_config_path="./data/predictor/configs/MLP_WAVE_VEC.json", 
-    #             trainset_path="./data/dataset/train/elem.csv", 
-    #             save_path="./data/predictor/MLP_WAVE/VEC", 
-    #             log_dir="./out/logs", 
-    #             epochs=100, 
-    #             blocking=False)
+    # vec
+    launch_task(model_config_path="./data/predictor/configs/MLP_WAVE_VEC.json", 
+                trainset_path="./data/dataset/train/elem.csv", 
+                save_path="./data/predictor/MLP_WAVE/VEC", 
+                log_dir="./out/logs", 
+                epochs=100, 
+                blocking=False)
 
     # wait for processes
     for p in jobs:

@@ -54,6 +54,8 @@ def pred():
         launch_task(model_name="gpt3_27", mode="inf", batch_size=8, seqlen=2048, device=device, blocking=False)
         launch_task(model_name="switchxl4", mode="inf", batch_size=1, seqlen=512, device=device, blocking=False)
         launch_task(model_name="switchxl4", mode="inf", batch_size=2, seqlen=512, device=device, blocking=False)
+        for p in jobs:
+            p.wait()
 
     # main train
     for device in ["NVIDIA_H100_80GB_HBM3", "NVIDIA_A100_80GB_PCIe", "Tesla_V100-PCIE-32GB", "NVIDIA_L4",]:
@@ -69,9 +71,8 @@ def pred():
         launch_task(model_name="gpt3_27", mode="train", batch_size=2, seqlen=2048, device=device, blocking=False)
         launch_task(model_name="switchxl4", mode="train", batch_size=1, seqlen=512, device=device, blocking=False)
         launch_task(model_name="switchxl4", mode="train", batch_size=2, seqlen=512, device=device, blocking=False)
-
-    for p in jobs:
-        p.wait()
+        for p in jobs:
+            p.wait()
 
 def main():
     pred()

@@ -52,6 +52,10 @@ def pred():
         launch_task(model_name="gpt3_27", mode="inf", batch_size=2, seqlen=2048, device=device, blocking=False)
         launch_task(model_name="gpt3_27", mode="inf", batch_size=8, seqlen=2048, device=device, blocking=False)
 
+    for p in jobs:
+        p.wait()
+
+    # training
     for device in ["AMD_Instinct_MI100", "AMD_Instinct_MI210", "AMD_Instinct_MI250"]:
         launch_task(model_name="bert_large", mode="train", batch_size=2, seqlen=512, device=device, blocking=False)
         launch_task(model_name="bert_large", mode="train", batch_size=8, seqlen=512, device=device, blocking=False)
