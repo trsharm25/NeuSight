@@ -68,18 +68,19 @@ The deep learning model configuration file specifies the architectural parameter
 If you use NeuSight in your research, please cite our paper:
 
 ```
-@inproceedings{10.1145/3669940.3707265,
- author = {Lee, Seonho and Phanishayee, Amar and Mahajan, Divya},
- title = {Forecasting GPU Performance for Deep Learning Training and Inference},
- year = {2025},
- isbn = {9798400706981},
- publisher = {Association for Computing Machinery},
- address = {New York, NY, USA},
- url = {https://doi.org/10.1145/3669940.3707265},
- doi = {10.1145/3669940.3707265},
- pages = {493–508},
- numpages = {16},
- keywords = {deep learning, gpu performance forecasting, ml for systems, training and inference},
- location = {Rotterdam, Netherlands},
- series = {ASPLOS '25}
+@inproceedings{neusight,
+  author = {Lee, Seonho and Phanishayee, Amar and Mahajan, Divya},
+  title = {Forecasting GPU Performance for Deep Learning Training and Inference},
+  year = {2025},
+  isbn = {9798400706981},
+  publisher = {Association for Computing Machinery},
+  address = {New York, NY, USA},
+  url = {https://doi.org/10.1145/3669940.3707265},
+  doi = {10.1145/3669940.3707265},
+  booktitle = {Proceedings of the 30th ACM International Conference on Architectural Support for Programming Languages and Operating Systems, Volume 1},
+  pages = {493–508},
+  numpages = {16},
+  keywords = {deep learning, gpu performance forecasting, ml for systems, training and inference},
+  location = {Rotterdam, Netherlands},
+  series = {ASPLOS '25}
 }
