@@ -150,7 +150,7 @@ def get_model(model_config_path, is_train, device, fusion):
         elif "switch" in model_name.lower():
             model = AutoModelForSeq2SeqLM.from_config(config, attn_implementation="eager")
         else:
-            NotImplementedError()
+            model = AutoModelForCausalLM.from_config(config, attn_implementation="eager")
         model = model.eval()
 
     # print("param count : ", sum(p.numel() for p in model.parameters()))
