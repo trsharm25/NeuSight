@@ -26,7 +26,8 @@ def replicate_layer(trace, model_name, n_layer, options=""):
     #     start = trace['Name'].loc[lambda x: x=="language_model_encoder_layers_0_input_layernorm"].index.item()
     #     end = trace['Name'].loc[lambda x: x=="make_viewless_tensor_1"].index.item() + 1
     else:
-        assert(0)
+        #Return default trace for generic model name
+        return trace
 
     prologue = trace.iloc[:start]
     layer = trace.iloc[start:end]
