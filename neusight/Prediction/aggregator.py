@@ -1,4 +1,3 @@
-
 import pandas as pd
 
 def replicate_layer(trace, model_name, n_layer, options=""):
@@ -22,11 +21,13 @@ def replicate_layer(trace, model_name, n_layer, options=""):
     elif "switch" in model_name.lower():
         # no need to convert
         return trace
+    elif "llama" in model_name.lower():
+        start = trace['Name'].loc[lambda x: x=="model_encoder_layers_0_self_attn_layer_norm"].index.item()
+        end = trace['Name'].loc[lambda x: x=="add_8"].index.item() + 1
     # elif "megatron" in model_name.lower():
     #     start = trace['Name'].loc[lambda x: x=="language_model_encoder_layers_0_input_layernorm"].index.item()
     #     end = trace['Name'].loc[lambda x: x=="make_viewless_tensor_1"].index.item() + 1
     else:
-        #Return default trace for generic model name
         return trace
 
     prologue = trace.iloc[:start]
